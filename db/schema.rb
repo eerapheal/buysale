@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_17_190945) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_214540) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,14 +33,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_190945) do
 
   create_table "products", force: :cascade do |t|
     t.bigint "vendor_id", null: false
-    t.bigint "category_id", null: false
+    t.bigint "subcategory_id", null: false
     t.string "name"
     t.decimal "price"
-    t.integer "vendors"
-    t.integer "categories"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["subcategory_id"], name: "index_products_on_subcategory_id"
     t.index ["vendor_id"], name: "index_products_on_vendor_id"
   end
 
@@ -53,6 +51,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_190945) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "subcategories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_subcategories_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,9 +88,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_190945) do
 
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
-  add_foreign_key "products", "categories"
+  add_foreign_key "products", "subcategories", on_delete: :cascade
   add_foreign_key "products", "vendors"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
+  add_foreign_key "subcategories", "categories", on_delete: :cascade
   add_foreign_key "vendors", "users"
 end
