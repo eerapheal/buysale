@@ -36,6 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_214540) do
     t.bigint "subcategory_id", null: false
     t.string "name"
     t.decimal "price"
+    t.string "description"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id"

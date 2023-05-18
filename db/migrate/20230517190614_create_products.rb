@@ -5,7 +5,8 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.references :subcategory, null: false, foreign_key: { to_table: :subcategories, on_delete: :cascade }
       t.string :name
       t.decimal :price
-
+      t.string :description
+      t.string :image
       t.timestamps
     end
   end
