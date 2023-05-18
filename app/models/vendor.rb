@@ -3,6 +3,7 @@ class Vendor < ApplicationRecord
     has_many :product, dependent: :destroy
  
     validates :name, presence: true 
-
+    validates :description, presence: true
+    
 
 end

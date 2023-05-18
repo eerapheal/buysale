@@ -77,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_214540) do
   create_table "vendors", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_vendors_on_user_id"

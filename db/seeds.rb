@@ -18,8 +18,8 @@
   Subcategory.create(  name: "TV", category_id: 3)
   Subcategory.create(  name: "Laptop", category_id: 3)
   Subcategory.create(  name: "Radio", category_id: 3)
-  Vendor.create(user_id: 1, name: "me")
-  Product.create(vendor_id: 1, subcategory_id: 1, name: "Chino", price: 100, )
+  Vendor.create(user_id: 1, name: "Santtech",  description: "Software consultant")
+  Product.create(vendor_id: 1, subcategory_id: 1, name: "Chino", price: 100,)
   Order.create(user_id: 1, product_id: 1, quantity: 12, total_price: 100, )
   Review.create(user_id: 1, product_id: 1, rating: 12, comment: "Nice one Raplh. keep pushing" )
   
