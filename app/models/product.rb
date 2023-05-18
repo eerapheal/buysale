@@ -4,5 +4,10 @@ class Product < ApplicationRecord
     has_one :category, through: :subcategory
     has_many :reviews, dependent: :destroy
     has_many :orders, dependent: :destroy
+
+    validates :vendor_id, presence: true 
+    validates :subcategory_id, presence: true 
+    validates :name, presence: true 
+    validates :price, presence: true 
   end
   
